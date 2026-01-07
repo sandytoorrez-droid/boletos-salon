@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Boletos de Acceso al Salón</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tipografía elegante -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #f7e7ce, #fdf6ec);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: #ffffff;
+      max-width: 420px;
+      width: 100%;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #5a3e2b;
+    }
+
+    p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    .resultado {
+      margin-top: 20px;
+      padding: 18px;
+      background: #f9f1e7;
+      border-radius: 12px;
+      display: none;
+      font-size: 16px;
+      color: #4a2f1d;
+    }
+
+    .resultado strong {
+      font-size: 18px;
+    }
+
+    footer {
+      margin-top: 15px;
+      font-size: 12px;
+      color: #888;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h1>Boletos para Acceso al Salón</h1>
+
+    <p>
+      Esta es la lista de invitados .<br>
+      <strong>Busca tu nombre</strong> para verificar la cantidad de invitados disponibles.
+    </p>
+
+    <select id="lista" onchange="mostrarBoletos()">
+      <option value="">— Selecciona tu nombre —</option>
+
+      <option value="Madrina Vero|5">Madrina Vero</option>
+      <option value="Familia Gonzales|8">Familia Gonzales</option>
+      <option value="Mérida|6">Mérida</option>
+      <option value="Tío Chucho|2">Tío Chucho</option>
+      <option value="Adriana|4">Adriana</option>
+      <option value="Tía Mona|4">Tía Mona</option>
+      <option value="Alfonso|4">Alfonso</option>
+      <option value="Julio|3">Julio</option>
+      <option value="Tía Pati|3">Tía Pati</option>
+      <option value="Gustavo|3">Gustavo</option>
+      <option value="Elizabeth|4">Elizabeth</option>
+      <option value="Papas Jonathan|3">Papas Jonathan</option>
+      <option value="Marlen|5">Marlen</option>
+      <option value="Señora Alicia|2">Señora Alicia</option>
+      <option value="Señora Angeles|4">Señora Angeles</option>
+      <option value="Señora Bello|2">Señora Bello</option>
+      <option value="Señora Silvia|2">Señora Silvia</option>
+      <option value="Señora Maru|2">Señora Maru</option>
+      <option value="Señora Pili|2">Señora Pili</option>
+      <option value="Esther|3">Esther</option>
+      <option value="Paulina|1">Paulina</option>
+      <option value="Espíritu|2">Espíritu</option>
+      <option value="Margaro|3">Margaro</option>
+      <option value="Víctor|2">Víctor</option>
+      <option value="Lobo|2">Lobo</option>
+      <option value="Halcón|2">Halcón</option>
+      <option value="Yamilet|1">Yamilet</option>
+      <option value="Dani|1">Dani</option>
+      <option value="Hermana Lupe|2">Hermana Lupe</option>
+      <option value="Hermana Wendy|5">Hermana Wendy</option>
+      <option value="Papas|4">Papas</option>
+      <option value="Abuelita|5">Abuelita</option>
+      <option value="Tío Pato|4">Tío Pato</option>
+      <option value="Tío Julio|4">Tío Julio</option>
+      <option value="Tío Miguel|4">Tío Miguel</option>
+      <option value="Tía Rosa|3">Tía Rosa</option>
+      <option value="Tío Chuy|3">Tío Chuy</option>
+      <option value="Tío Lalo|4">Tío Lalo</option>
+      <option value="Mauricio|5">Mauricio</option>
+      <option value="Omar|5">Omar</option>
+      <option value="Marcos|4">Marcos</option>
+      <option value="Compadre|2">Compadre</option>
+      <option value="Juan Carlos|4">Juan Carlos</option>
+      <option value="Sandra|11">Sandra</option>
+    </select>
+
+    <div class="resultado" id="resultado"></div>
+
+    <footer>
+      Con cariño, los novios 💖
+    </footer>
+  </div>
+
+  <script>
+    function mostrarBoletos() {
+      const lista = document.getElementById("lista");
+      const resultado = document.getElementById("resultado");
+
+      if (lista.value === "") {
+        resultado.style.display = "none";
+        return;
+      }
+
+      const datos = lista.value.split("|");
+      const nombre = datos[0];
+      const boletos = datos[1];
+
+      resultado.innerHTML = `
+        <strong>${nombre}</strong><br>
+        Tienes <strong>${boletos}</strong> boletos para acceso al salón con tus invitados.
+        Favor de presentar esta pantalla en la entrada
+      `;
+      resultado.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
